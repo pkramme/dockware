@@ -1,4 +1,50 @@
 {% extends "template/Dockerfile.global.sh.twig" %}
 
-{% block shopware %}
+{% block docker_from %}
+FROM dockware/flex:18.04
+{% endblock %}
+
+{% block basic_variables %}{% endblock %}
+{% block main_os %}{% endblock %}
+
+{% block application_variables %}
+{% block application_variables_mysql %}
+&& echo ""
+ENV MYSQL_USER not-set
+ENV MYSQL_PWD not-set
+RUN echo "export MYSQL_USER=${MYSQL_USER}" >> /etc/profile \
+&& echo "export MYSQL_PWD=${MYSQL_PWD}" >> /etc/profile \
+{% endblock %}
+{% endblock %}
+
+{% block application %}
+{% block application_mysql %}
+{% include 'template/components/mysql/os-current/install.sh.twig' with { 'pwd' : db.pwd } %}
+
+&& service mysql start \
+    && mysql --user={{ db.user }} --password={{ db.pwd }} -e "use mysql; update user set host='%' where host='localhost';" \
+    && service mysql restart \
+{% endblock %}
+
+
+{% block application_adminer %}
+{% include 'template/components/adminer/install.sh.twig' %}
+{% endblock %}
+
+
+{% block application_mailcatcher %}
+{% include 'template/components/mailcatcher/install.sh.twig' %}
+
+&& {% for key,value in php.versions %}
+{% if value.active==1 %}
+echo "sendmail_path = /usr/bin/env $(which catchmail) -f 'local@dockware'" >> /etc/php/{{ key }}/mods-available/mailcatcher.ini && \
+{% endif %}
+{% endfor %}
+    echo ""
+{% endblock %}
+
+{% block application_pimpmylog %}
+{% include 'template/components/pimpmylog/install.sh.twig' %}
+{% endblock %}
+
 {% endblock %}

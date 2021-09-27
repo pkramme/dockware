@@ -1,6 +1,6 @@
 {
-    "version": "1.4.1",
-    "base_image": "ubuntu:18.04",
+    "version": "1.5.0",
+    "base_image": "ubuntu:20.04",
     "db": {
         "host": "localhost",
         "port": "3306",

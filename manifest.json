@@ -1,10 +1,14 @@
 {
     "images": {
         "flex": [
-            "flex/latest:latest"
+            "flex/latest:latest",
+            "flex/20.04:20.04",
+            "flex/18.04:18.04"
         ],
         "essentials": [
-            "essentials/latest:latest"
+            "essentials/latest:latest",
+            "essentials/18.04:18.04",
+            "essentials/maria-db:maria-db"
         ],
         "contribute": [
             "contribute/latest:latest"
@@ -70,6 +74,7 @@
         "dev": [
             "dev/6.4.4.1:latest",
             "dev/6.4.4.1:6.4.4.1",
+            "dev/6.4.4.1-multiarch:6.4.4.1-multiarch",
             "dev/6.4.4.0:6.4.4.0",
             "dev/6.4.3.1:6.4.3.1",
             "dev/6.4.3.0:6.4.3.0",

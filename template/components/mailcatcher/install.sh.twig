@@ -1,4 +1,7 @@
-RUN apt-get update \
+## ***********************************************************************
+##  MAILCATCHER INSTALL
+## ***********************************************************************
+&& apt-get update \
     && apt install -y build-essential libsqlite3-dev ruby-dev \
     && gem install mailcatcher --no-ri --no-rdoc \
     && phpenmod mailcatcher \
@@ -6,3 +9,5 @@ RUN apt-get update \
 
 
 COPY ./config/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf
+
+RUN echo "" \
