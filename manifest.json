@@ -7,7 +7,7 @@
         ],
         "essentials": [
             "essentials/latest:latest",
-            "essentials/18.04:18.04",
+            "essentials/mysql-8:mysql-8",
             "essentials/maria-db:maria-db"
         ],
         "contribute": [

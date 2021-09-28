@@ -3,7 +3,7 @@
 ## ***********************************************************************
 && apt-get update \
     && apt install -y build-essential libsqlite3-dev ruby-dev \
-    && gem install mailcatcher --no-ri --no-rdoc \
+    && gem install mailcatcher --no-document \
     && phpenmod mailcatcher \
     && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 

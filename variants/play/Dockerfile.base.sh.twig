@@ -1,7 +1,7 @@
 {% extends "template/Dockerfile.global.sh.twig" %}
 
 {% block docker_from %}
-FROM dockware/essentials:latest
+FROM {{base_image}}
 {% endblock %}
 
 {% block basic_variables %}{% endblock %}

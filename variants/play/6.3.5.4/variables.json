@@ -1,4 +1,5 @@
 {
+    "base_image": "dockware/essentials:mysql-8",
     "shopware": {
         "version": "6.3.5.4",
         "download_url": "https://www.shopware.com/en/Download/redirect/version/sw6/file/install_v6.3.5.4_17ae1ed32c8bc21dabff28316f3c90ed38ba24cb.zip"

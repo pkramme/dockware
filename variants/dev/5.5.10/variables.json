@@ -1,4 +1,5 @@
 {
+    "base_image": "dockware/essentials:maria-db",
     "env": "dev",
     "apache": {
         "docroot": "/var/www/html"

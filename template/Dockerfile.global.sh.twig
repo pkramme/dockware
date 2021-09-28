@@ -306,17 +306,17 @@ RUN cd /var/www \
 {% endblock %}
 
 {% block components_tideways %}
-    && sudo echo 'deb https://packages.tideways.com/apt-packages-main any-version main' | sudo tee /etc/apt/sources.list.d/tideways.list \
-    && sudo wget -qO - https://packages.tideways.com/key.gpg | sudo apt-key add - \
-    && sudo apt-get -y update  \
-    && sudo apt-get -y install tideways-php tideways-daemon  \
-    && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+    #&& sudo echo 'deb https://packages.tideways.com/apt-packages-main any-version main' | sudo tee /etc/apt/sources.list.d/tideways.list \
+    #&& sudo wget -qO - https://packages.tideways.com/key.gpg | sudo apt-key add - \
+    #&& sudo apt-get -y update  \
+    #&& sudo apt-get -y install tideways-php tideways-daemon  \
+    #&& rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
-COPY ./config/tideways/tideways-daemon /etc/default/tideways-daemon
+#COPY ./config/tideways/tideways-daemon /etc/default/tideways-daemon
 
 {% for key,value in php.versions %}
-COPY ./config/tideways/tideways.ini /etc/php/{{ key }}/fpm/conf.d/20-tideways.ini
-COPY ./config/tideways/tideways.ini /etc/php/{{ key }}/cli/conf.d/20-tideways.ini
+#COPY ./config/tideways/tideways.ini /etc/php/{{ key }}/fpm/conf.d/20-tideways.ini
+#COPY ./config/tideways/tideways.ini /etc/php/{{ key }}/cli/conf.d/20-tideways.ini
 {% endfor %}
 
 {% endblock %}

@@ -1,8 +1,6 @@
 {% extends "variants/essentials/Dockerfile.base.sh.twig" %}
 
-{% block docker_from %}
-FROM dockware/flex:20.04
-{% endblock %}
+
 
 {% block application_mysql %}
 {% include 'template/components/maria-db/10.3/install.sh.twig' with { 'pwd' : db.pwd } %}
