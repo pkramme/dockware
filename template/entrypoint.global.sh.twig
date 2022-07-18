@@ -252,6 +252,14 @@ fi
 #   - "httpd (pid 13) already running"
 # to avoid this, we simple remove an existing file
 sudo rm -f /var/run/apache2/apache2.pid
+# in some situations Apache2 doesn't stop quickly enough,
+# causing the restart below to fail because the port is still
+# in use. To avoid this, we kill all running Apache2 processes.
+while (($(sleep 1 && sudo pgrep --count apache2) > 0)); do
+  echo "There are still apache2 processes running! Sending SIGKILL..."
+  sudo pkill -SIGKILL apache2
+done
+
 # start test and start apache
 echo "DOCKWARE: testing and starting Apache..."
 sudo apache2ctl configtest
